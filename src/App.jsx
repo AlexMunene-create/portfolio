@@ -1,17 +1,26 @@
-import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-gray-900">Welcome to My React App</h1>
-          </div>
-        </div>
+    <Router>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <main>
+              <Hero />
+              {/* Add more components here */}
+            </main>
+          } />
+          <Route path="/about" element={<div className="p-8">About Page</div>} />
+          <Route path="/projects" element={<div className="p-8">Projects Page</div>} />
+          <Route path="/contact" element={<div className="p-8">Contact Page</div>} />
+        </Routes>
       </div>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
